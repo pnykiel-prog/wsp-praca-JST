@@ -22,6 +22,7 @@ export const C = {
 /* ===== Nawigacja boczna: pozycja -> sekcja startowa ===== */
 export const navItems = [
   { group: 'start', label: 'Start', target: 's1' },
+  { group: 'video', label: 'Wideo', target: 'svideo' },
   { group: 'wyzw', label: 'Wyzwanie', target: 's2' },
   { group: 'kier', label: 'Kierunek DI', target: 's3' },
   { group: 'mapa', label: '6 obszarów', target: 's4' },

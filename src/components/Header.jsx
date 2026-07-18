@@ -84,7 +84,7 @@ export default function Header({ full, onShort, onFull }) {
           className="version-count"
           style={{ fontSize: 11, color: '#9AA2B0', fontWeight: 600, letterSpacing: '.02em' }}
         >
-          {full ? '24 sekcje' : '18 sekcji'}
+          {full ? '25 sekcji' : '19 sekcji'}
         </div>
       </div>
     </header>

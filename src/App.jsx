@@ -31,6 +31,13 @@ const BG_COMPOSE = 'radial-gradient(rgba(22,48,90,.05) 1.2px, transparent 1.2px)
 const BG_PROOF = 'radial-gradient(rgba(176,122,18,.08) 1.2px, transparent 1.2px) 0 0/24px 24px, #FBF3DF'
 const FONT_DISPLAY = "'Bricolage Grotesque', sans-serif"
 
+/* ===== Wideo (YouTube) =====
+ * Wklej tutaj ID filmu z YouTube — jedyna wartość do podmiany.
+ * ID to część adresu po „v=" (np. https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+ * lub po „youtu.be/". Pusta wartość = na slajdzie widać placeholder.
+ */
+const YOUTUBE_ID = ''
+
 /* ===== Slajd „Problem" (obszary 01–05) ===== */
 function ProblemSlide({ id, group, num, subtitle, problem, heading, tags, note, diagram }) {
   return (
@@ -347,6 +354,104 @@ export default function App() {
               <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </button>
+        </section>
+
+        {/* ===== Wideo (YouTube) ===== */}
+        <section
+          id="svideo"
+          data-nav-group="video"
+          className="slide"
+          style={{
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            padding: '104px 96px 84px 210px',
+            background: 'radial-gradient(120% 120% at 50% 15%, #1B3A63 0%, #14294A 50%, #0E1F3B 100%)',
+            color: '#F4EEE1',
+          }}
+        >
+          <div style={{ maxWidth: 1000, width: '100%', margin: '0 auto' }}>
+            <div style={{ fontSize: 12, letterSpacing: '.2em', textTransform: 'uppercase', fontWeight: 700, color: '#EFB02A', marginBottom: 14 }}>
+              Wideo
+            </div>
+            <h2
+              style={{
+                fontFamily: FONT_DISPLAY,
+                fontWeight: 700,
+                fontSize: 44,
+                lineHeight: 1.05,
+                letterSpacing: '-.02em',
+                margin: '0 0 28px',
+                maxWidth: 760,
+              }}
+            >
+              Zobacz prezentację
+            </h2>
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                aspectRatio: '16 / 9',
+                borderRadius: 18,
+                overflow: 'hidden',
+                border: '1px solid rgba(255,255,255,.12)',
+                boxShadow: '0 30px 60px -34px rgba(0,0,0,.6)',
+                background: '#0B1626',
+              }}
+            >
+              {YOUTUBE_ID ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_ID}?rel=0`}
+                  title="Prezentacja Bonam Curam"
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
+                />
+              ) : (
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 16,
+                    background: 'rgba(255,255,255,.04)',
+                    color: '#AEB9CB',
+                    textAlign: 'center',
+                    padding: 24,
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 74,
+                      height: 74,
+                      borderRadius: '50%',
+                      border: '2px solid #EFB02A',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#EFB02A',
+                    }}
+                  >
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  <div style={{ fontSize: 14, lineHeight: 1.5, maxWidth: 420 }}>
+                    Wideo — do uzupełnienia. Wklej ID filmu YouTube w stałej{' '}
+                    <code style={{ color: '#F4EEE1' }}>YOUTUBE_ID</code> (plik <code style={{ color: '#F4EEE1' }}>src/App.jsx</code>).
+                  </div>
+                </div>
+              )}
+            </div>
+            <div style={{ marginTop: 18, fontSize: 12.5, color: '#8FA0B8', lineHeight: 1.5 }}>
+              Film hostowany na YouTube (osadzenie w trybie prywatności rozszerzonej — bez ciasteczek do momentu odtworzenia).
+            </div>
+          </div>
         </section>
 
         {/* ===== s2 — Wyzwanie ===== */}
