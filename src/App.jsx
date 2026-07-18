@@ -36,7 +36,7 @@ const FONT_DISPLAY = "'Bricolage Grotesque', sans-serif"
  * ID to część adresu po „v=" (np. https://www.youtube.com/watch?v=dQw4w9WgXcQ)
  * lub po „youtu.be/". Pusta wartość = na slajdzie widać placeholder.
  */
-const YOUTUBE_ID = ''
+const YOUTUBE_ID = 'kKnJ7Dj0Msc'
 
 /* ===== Slajd „Problem" (obszary 01–05) ===== */
 function ProblemSlide({ id, group, num, subtitle, problem, heading, tags, note, diagram }) {
@@ -249,7 +249,7 @@ export default function App() {
               pointerEvents: 'none',
             }}
           >
-            <Logo size="100%" variant="mono" color="#FFFFFF" style={{ width: '100%', height: '100%' }} />
+            <Logo size="100%" variant="mono" style={{ width: '100%', height: '100%' }} />
           </div>
           <div style={{ position: 'relative', maxWidth: 920, animation: 'fadeUp .7s ease both' }}>
             <div
@@ -1291,7 +1291,7 @@ export default function App() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20 }}>
                   <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(239,176,42,.16)', color: '#EFB02A', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <Logo size={30} variant="mono" color="#EFB02A" />
+                    <Logo size={30} variant="color" />
                   </div>
                   <div>
                     <div style={{ fontFamily: FONT_DISPLAY, fontWeight: 800, fontSize: 20, color: '#fff' }}>Konsorcjum Bonam Curam</div>
@@ -1328,7 +1328,7 @@ export default function App() {
           }}
         >
           <div style={{ position: 'absolute', right: -40, bottom: -40, width: 420, height: 420, opacity: 0.07, pointerEvents: 'none' }}>
-            <Logo size="100%" variant="mono" color="#FFFFFF" style={{ width: '100%', height: '100%' }} />
+            <Logo size="100%" variant="mono" style={{ width: '100%', height: '100%' }} />
           </div>
           <div style={{ position: 'relative', maxWidth: 1080, width: '100%' }}>
             <div style={{ fontSize: 12, letterSpacing: '.2em', textTransform: 'uppercase', fontWeight: 700, color: '#EFB02A', marginBottom: 16 }}>
@@ -1364,7 +1364,7 @@ export default function App() {
                 „Gmina nie musi budować opieki sama."
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 16, background: 'rgba(255,255,255,.05)', border: '1px solid rgba(255,255,255,.13)', borderRadius: 16, padding: '16px 24px' }}>
-                <Logo size={56} variant="mono" color="#FFFFFF" />
+                <Logo size={56} variant="color" />
                 <div>
                   <div style={{ fontFamily: FONT_DISPLAY, fontWeight: 800, fontSize: 16, color: '#fff' }}>Konsorcjum Bonam Curam</div>
                   <div style={{ fontSize: 12.5, color: '#8FA0B8', marginTop: 2 }}>Kontakt — dane do uzupełnienia</div>
