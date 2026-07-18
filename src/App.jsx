@@ -353,7 +353,7 @@ export default function App() {
           >
             <Logo size="100%" variant="mono" style={{ width: '100%', height: '100%' }} />
           </div>
-          <div style={{ position: 'relative', maxWidth: 920, animation: 'fadeUp .7s ease both' }}>
+          <div style={{ position: 'relative', width: '100%', maxWidth: 920, animation: 'fadeUp .7s ease both' }}>
             <div
               style={{
                 display: 'inline-flex',
@@ -472,7 +472,7 @@ export default function App() {
             background: '#FBF7EF',
           }}
         >
-          <div style={{ maxWidth: 1100 }}>
+          <div style={{ width: '100%', maxWidth: 1100 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
               <span style={{ fontSize: 12, letterSpacing: '.2em', textTransform: 'uppercase', fontWeight: 700, color: '#B07A12' }}>
                 Wyzwanie demograficzne

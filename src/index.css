@@ -85,10 +85,16 @@ input[type='range'] {
 
 /* ===== Responsywność (desktop-first, degradacja dla mniejszych) ===== */
 
-/* Sekcje mogą rosnąć powyżej 100vh, gdy treść się nie mieści */
+/* Sekcje mogą rosnąć powyżej 100vh, gdy treść się nie mieści.
+   justify-content/align-items: center — treść wyśrodkowana w dostępnej
+   przestrzeni (na szerokich ekranach nie „ucieka" do lewej krawędzi).
+   Sekcje pionowe (flex-direction: column) mają justify-content ustawione
+   inline (center w pionie), więc CSS steruje tam osią poziomą. */
 .slide {
   min-height: 100vh;
   scroll-snap-align: start;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 1100px) {

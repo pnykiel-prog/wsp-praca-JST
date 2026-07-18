@@ -10,12 +10,12 @@ export default function SideNav({ activeGroup, onNavigate }) {
         left: 0,
         top: 64,
         bottom: 0,
-        width: 150,
+        width: 188,
         zIndex: 55,
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
-        padding: '22px 10px',
+        padding: '22px 12px',
         overflowY: 'auto',
         background: 'transparent',
       }}
@@ -29,13 +29,13 @@ export default function SideNav({ activeGroup, onNavigate }) {
             style={{
               display: 'flex',
               alignItems: 'center',
-              gap: 10,
+              gap: 11,
               width: '100%',
               textAlign: 'left',
               border: 'none',
               background: on ? '#16305A' : 'transparent',
               cursor: 'pointer',
-              padding: '7px 9px',
+              padding: '9px 11px',
               borderRadius: 9,
               transition: 'background .2s',
             }}
@@ -43,19 +43,19 @@ export default function SideNav({ activeGroup, onNavigate }) {
             <span
               style={{
                 flex: '0 0 auto',
-                width: 8,
-                height: 8,
+                width: 9,
+                height: 9,
                 borderRadius: 2,
                 background: on ? '#EFB02A' : '#C9CFDA',
               }}
             />
             <span
               style={{
-                fontSize: 11.5,
+                fontSize: 13,
                 fontWeight: on ? 700 : 500,
                 color: on ? '#fff' : '#8A93A5',
                 letterSpacing: '.01em',
-                lineHeight: 1.15,
+                lineHeight: 1.2,
               }}
             >
               {it.label}
