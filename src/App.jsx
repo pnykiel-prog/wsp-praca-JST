@@ -267,6 +267,59 @@ function VideoSlide({ id, group, label, heading }) {
   )
 }
 
+/* ===== Slajd-przerywnik (hasło przejściowe) =====
+ * Jedna mocna myśl, duża typografia, dużo światła. Spójny układ dla wszystkich.
+ * variant 'gold' — akcent koloru marki (wejście w obszar/sekcję)
+ * variant 'dark' — wersja na ciemnym tle (domknięcie bloku)
+ */
+function Interstitial({ id, group, text, variant = 'gold' }) {
+  const dark = variant === 'dark'
+  return (
+    <section
+      id={id}
+      data-nav-group={group}
+      className="slide"
+      style={{
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '104px 96px 84px 210px',
+        background: dark
+          ? 'radial-gradient(120% 120% at 50% 20%, #1B3A63 0%, #14294A 50%, #0E1F3B 100%)'
+          : '#EFB02A',
+        color: dark ? '#F4EEE1' : '#16305A',
+      }}
+    >
+      <div style={{ width: '100%', maxWidth: 1000, margin: '0 auto' }}>
+        <div
+          style={{
+            width: 54,
+            height: 4,
+            borderRadius: 2,
+            background: dark ? '#EFB02A' : '#16305A',
+            marginBottom: 34,
+            opacity: dark ? 1 : 0.9,
+          }}
+        />
+        <div
+          style={{
+            fontFamily: FONT_DISPLAY,
+            fontWeight: 700,
+            fontSize: 'clamp(32px, 4.4vw, 58px)',
+            lineHeight: 1.08,
+            letterSpacing: '-.02em',
+            maxWidth: 900,
+            textWrap: 'balance',
+          }}
+        >
+          {text}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function App() {
   const [full, setFull] = useState(true)
   const [beds, setBeds] = useState(50)
@@ -457,6 +510,14 @@ export default function App() {
             </svg>
           </button>
         </section>
+
+        {/* ===== Hasło: teza otwierająca ===== */}
+        <Interstitial
+          id="int-start"
+          group="start"
+          variant="gold"
+          text="Zadanie własne. Środki zewnętrzne. Jeden partner."
+        />
 
         {/* ===== s2 — Wyzwanie ===== */}
         <section
@@ -720,6 +781,14 @@ export default function App() {
           </div>
         </section>
 
+        {/* ===== Hasło: przed obszarem 01 ===== */}
+        <Interstitial
+          id="int-a01"
+          group="a01"
+          variant="gold"
+          text="Diagnoza otwiera dostęp do środków."
+        />
+
         {/* ===== OBSZAR 01 — Diagnoza ===== */}
         <ProblemSlide
           id="s5"
@@ -774,6 +843,14 @@ export default function App() {
             </div>
           </div>
         </ProofSection>
+
+        {/* ===== Hasło: przed obszarem 02 ===== */}
+        <Interstitial
+          id="int-a02"
+          group="a02"
+          variant="gold"
+          text="Bezpieczeństwo, które nie potrzebuje kamery."
+        />
 
         {/* ===== OBSZAR 02 — Bezpieczny senior ===== */}
         <ProblemSlide
@@ -853,6 +930,14 @@ export default function App() {
           heading="Zobacz, jak działa monitoring w mieszkaniu"
         />
 
+        {/* ===== Hasło: przed obszarem 03 ===== */}
+        <Interstitial
+          id="int-a03"
+          group="a03"
+          variant="gold"
+          text="Budowa, którą można sfinansować niemal w całości."
+        />
+
         {/* ===== OBSZAR 03 — Kampusy ===== */}
         <ProblemSlide
           id="s11"
@@ -926,6 +1011,14 @@ export default function App() {
             </div>
           </div>
         </ProofSection>
+
+        {/* ===== Hasło: przed obszarem 04 ===== */}
+        <Interstitial
+          id="int-a04"
+          group="a04"
+          variant="gold"
+          text="Ta sama złotówka, więcej opieki."
+        />
 
         {/* ===== OBSZAR 04 — Oszczędności DPS ===== */}
         <ProblemSlide
@@ -1034,6 +1127,14 @@ export default function App() {
           </div>
         </ProofSection>
 
+        {/* ===== Hasło: przed obszarem 05 ===== */}
+        <Interstitial
+          id="int-a05"
+          group="a05"
+          variant="gold"
+          text="Opieka zostaje we wsi. Senior też."
+        />
+
         {/* ===== OBSZAR 05 — Tereny wiejskie ===== */}
         <ProblemSlide
           id="s17"
@@ -1081,6 +1182,14 @@ export default function App() {
             prawnikiem.
           </div>
         </ProofSection>
+
+        {/* ===== Hasło: przed obszarem 06 ===== */}
+        <Interstitial
+          id="int-a06"
+          group="a06"
+          variant="gold"
+          text="Wkład własny to ułamek całości."
+        />
 
         {/* ===== OBSZAR 06 — Finansowanie ===== */}
         <section
@@ -1322,6 +1431,14 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        {/* ===== Hasło: domknięcie (na ciemnym tle) ===== */}
+        <Interstitial
+          id="int-kroki"
+          group="kroki"
+          variant="dark"
+          text="Zgodnie z prawem. Zgodnie z kierunkiem. W zasięgu budżetu."
+        />
 
         {/* ===== s24 — Kolejne kroki ===== */}
         <section
