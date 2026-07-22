@@ -1,7 +1,31 @@
+import { useState, useEffect } from 'react'
 import Logo from '../Logo.jsx'
 
-/** Górny pasek (fixed, 64px) — logo, nazwa, przełącznik Krótka/Pełna, licznik. */
+/** Górny pasek (fixed, 64px) — logo, nazwa, przełącznik Krótka/Pełna, licznik, pełny ekran. */
 export default function Header({ full, onShort, onFull }) {
+  // ===== Pełny ekran (Fullscreen API) =====
+  const [isFs, setIsFs] = useState(false)
+  useEffect(() => {
+    const onChange = () => setIsFs(!!(document.fullscreenElement || document.webkitFullscreenElement))
+    document.addEventListener('fullscreenchange', onChange)
+    document.addEventListener('webkitfullscreenchange', onChange)
+    return () => {
+      document.removeEventListener('fullscreenchange', onChange)
+      document.removeEventListener('webkitfullscreenchange', onChange)
+    }
+  }, [])
+  const toggleFs = () => {
+    const active = document.fullscreenElement || document.webkitFullscreenElement
+    if (active) {
+      const exit = document.exitFullscreen || document.webkitExitFullscreen
+      if (exit) exit.call(document)
+    } else {
+      const el = document.documentElement
+      const req = el.requestFullscreen || el.webkitRequestFullscreen
+      if (req) req.call(el)
+    }
+  }
+
   const pill = (active) => ({
     border: 'none',
     cursor: 'pointer',
@@ -86,6 +110,34 @@ export default function Header({ full, onShort, onFull }) {
         >
           {full ? '25 sekcji' : '19 sekcji'}
         </div>
+        <button
+          className="fs-btn"
+          onClick={toggleFs}
+          aria-label={isFs ? 'Wyjdź z pełnego ekranu' : 'Pełny ekran'}
+          title={isFs ? 'Wyjdź z pełnego ekranu' : 'Pełny ekran'}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: 34,
+            height: 34,
+            borderRadius: 9,
+            border: '1px solid #E4DBC8',
+            background: '#F1EADA',
+            color: '#16305A',
+            cursor: 'pointer',
+          }}
+        >
+          {isFs ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M8 3v3a2 2 0 01-2 2H3M21 8h-3a2 2 0 01-2-2V3M3 16h3a2 2 0 012 2v3M16 21v-3a2 2 0 012-2h3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M8 3H5a2 2 0 00-2 2v3M16 3h3a2 2 0 012 2v3M8 21H5a2 2 0 01-2-2v-3M16 21h3a2 2 0 002-2v-3" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
+        </button>
       </div>
     </header>
   )

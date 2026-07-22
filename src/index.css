@@ -81,6 +81,16 @@ a:hover {
   transform: translateY(1px);
 }
 
+/* ===== Przycisk pełnego ekranu ===== */
+.fs-btn {
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.fs-btn:hover {
+  background: #16305a;
+  color: #efb02a;
+  border-color: #16305a;
+}
+
 /* ===== Suwaki kalkulatora ===== */
 input[type='range'] {
   accent-color: #efb02a;
