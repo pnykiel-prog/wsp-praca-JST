@@ -5,10 +5,6 @@ import Logo from './Logo.jsx'
 import { Icon } from './icons.jsx'
 import { ModCard, TagPill, SectionLabel, ProofHead, H2Light } from './ui.jsx'
 import {
-  DiagramDiagnoza,
-  DiagramWies,
-} from './diagrams.jsx'
-import {
   areaTiles,
   mods01,
   mods02,
@@ -896,7 +892,7 @@ export default function App() {
           problem="Dane o potrzebach są rozproszone i szybko się dezaktualizują — trudno precyzyjnie planować usługi i pisać wnioski."
           heading="Twarde dane pod każdą decyzję opiekuńczą"
           tags={['Jeden aktualny obraz potrzeb', 'Krótszy czas oceny i raportu', 'Trafniejsze kierowanie wsparcia', 'Gotowa diagnoza pod wnioski']}
-          diagram={<DiagramDiagnoza />}
+          diagram={<FramedImg src="diagnoza-diagram.webp" alt="Jak działa aplikacja do diagnozy potrzeb" maxWidth={560} />}
         />
         <ComposeSlide
           id="s6"
@@ -1310,7 +1306,7 @@ export default function App() {
           problem="W tysiącach wsi nie ma żadnej opieki, a budowa domu seniora jest nieopłacalna."
           heading="Opieka tam, gdzie jej nie było — bez budowy od zera"
           tags={['Senior zostaje w swojej miejscowości', 'Nowe miejsca pracy', 'Zasiedlanie pustych domów', 'Szybki start i odwracalność']}
-          diagram={<DiagramWies />}
+          diagram={<FramedImg src="wioska-diagram.webp" alt="Model Wioska Opiekuńcza — rozproszona opieka senioralna" maxWidth={560} />}
         />
         <ComposeSlide
           id="s18"
