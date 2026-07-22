@@ -68,6 +68,19 @@ a:hover {
   }
 }
 
+/* ===== Pływający przycisk „następny slajd" ===== */
+.next-btn {
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+.next-btn:hover {
+  transform: translateY(3px);
+  background: #f0b93e;
+  box-shadow: 0 14px 30px -10px rgba(0, 0, 0, 0.55);
+}
+.next-btn:active {
+  transform: translateY(1px);
+}
+
 /* ===== Suwaki kalkulatora ===== */
 input[type='range'] {
   accent-color: #efb02a;

@@ -427,6 +427,32 @@ export default function App() {
     if (el) window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
   }, [])
 
+  // Przeskok do następnego pełnego slajdu (pomija sekcje ukryte w wersji Krótkiej).
+  const scrollToNext = useCallback(() => {
+    const y = Math.round(window.scrollY)
+    const secs = [...document.querySelectorAll('main > section[id]')].filter(
+      (s) => s.offsetParent !== null,
+    )
+    const next = secs.find((s) => s.offsetTop > y + 5)
+    if (next) window.scrollTo({ top: next.offsetTop, behavior: 'smooth' })
+  }, [])
+
+  // Ukrycie przycisku „następny" na ostatnim slajdzie.
+  const [atEnd, setAtEnd] = useState(false)
+  useEffect(() => {
+    const onScroll = () => {
+      const doc = document.documentElement
+      setAtEnd(window.innerHeight + window.scrollY >= doc.scrollHeight - 80)
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [full])
+
   // Podświetlanie nawigacji wg widocznej sekcji.
   useEffect(() => {
     const t = setTimeout(() => {
@@ -578,31 +604,6 @@ export default function App() {
               </div>
             </div>
           </div>
-          <button
-            onClick={() => goTo('s2')}
-            style={{
-              position: 'absolute',
-              left: '50%',
-              bottom: 34,
-              transform: 'translateX(-50%)',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              gap: 6,
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: 'rgba(244,238,225,.7)',
-              animation: 'bob 2s ease-in-out infinite',
-            }}
-          >
-            <span style={{ fontSize: 11, letterSpacing: '.18em', textTransform: 'uppercase', fontWeight: 600 }}>
-              Przewiń
-            </span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </button>
         </section>
 
         {/* ===== Hasło: teza otwierająca ===== */}
@@ -1679,6 +1680,35 @@ export default function App() {
           </div>
         </section>
       </main>
+
+      {/* Pływający przycisk: przeskok do następnego pełnego slajdu */}
+      {!atEnd && (
+        <div style={{ position: 'fixed', left: '50%', bottom: 22, transform: 'translateX(-50%)', zIndex: 58 }}>
+          <button
+            className="next-btn"
+            onClick={scrollToNext}
+            aria-label="Następny slajd"
+            title="Następny slajd"
+            style={{
+              width: 48,
+              height: 48,
+              borderRadius: '50%',
+              border: '1px solid rgba(22,48,90,.18)',
+              background: '#EFB02A',
+              color: '#16305A',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 10px 26px -10px rgba(0,0,0,.5)',
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
+        </div>
+      )}
     </>
   )
 }
