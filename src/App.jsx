@@ -6,7 +6,6 @@ import { Icon } from './icons.jsx'
 import { ModCard, TagPill, SectionLabel, ProofHead, H2Light } from './ui.jsx'
 import {
   DiagramDiagnoza,
-  DiagramBezpieczny,
   DiagramKampus,
   DiagramDps,
   DiagramWies,
@@ -923,16 +922,20 @@ export default function App() {
           heading="Opieka nad samotnym seniorem — bez naruszania prywatności"
           tags={['Szybsza reakcja bez udziału seniora', 'Obchody krótsze i celowane', 'Bez obrazu wideo (RODO)', 'Dokumentacja zdarzeń']}
           note="Zakres: mieszkania rozproszone — lokale wspomagane, COM, mieszkania gminne i prywatne (nie DPS)."
-          diagram={<DiagramBezpieczny />}
-        />
-
-        {/* ===== Obszar 02 — Obraz: przegląd systemu ===== */}
-        <ImageSlide
-          id="s8-img"
-          group="a02"
-          src="senior-przeglad.png"
-          kicker="Obszar 02 · System w praktyce"
-          caption="Bezdotykowy monitoring aktywności i bezpieczeństwa w mieszkaniu seniora — czujniki ruchu, obecności i codziennych nawyków, z podglądem statusu dla opiekuna."
+          diagram={
+            <img
+              src={`${import.meta.env.BASE_URL}senior-przeglad.webp`}
+              alt="Monitoring aktywności i bezpieczeństwa w mieszkaniu seniora"
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: 540,
+                borderRadius: 16,
+                border: '1px solid rgba(255,255,255,.14)',
+                boxShadow: '0 30px 60px -34px rgba(0,0,0,.6)',
+              }}
+            />
+          }
         />
 
         <ComposeSlide
@@ -948,7 +951,7 @@ export default function App() {
         <ImageSlide
           id="s9-img"
           group="a02"
-          src="senior-rzut.png"
+          src="senior-rzut.webp"
           kicker="Obszar 02 · Elementy systemu"
           caption="Rozmieszczenie czujników i panelu kontaktu w mieszkaniu — monitoring oparty na analizie ruchu i danych środowiskowych, bez nagrywania obrazu."
         />
@@ -1007,7 +1010,7 @@ export default function App() {
         <ImageSlide
           id="s10-img"
           group="a02"
-          src="senior-alarm.png"
+          src="senior-alarm.webp"
           kicker="Obszar 02 · Ścieżka alarmu"
           caption="Od automatycznego wykrycia zdarzenia, przez równoczesne powiadomienie rodziny, opiekuna i gminy, po automatyczną eskalację do pogotowia, gdy brak reakcji."
         />
