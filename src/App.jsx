@@ -6,7 +6,6 @@ import { Icon } from './icons.jsx'
 import { ModCard, TagPill, SectionLabel, ProofHead, H2Light } from './ui.jsx'
 import {
   DiagramDiagnoza,
-  DiagramKampus,
   DiagramDps,
   DiagramWies,
 } from './diagrams.jsx'
@@ -1045,7 +1044,20 @@ export default function App() {
             'Mniej ryzyka przetargowego',
             'Jedna linia odpowiedzialności',
           ]}
-          diagram={<DiagramKampus />}
+          diagram={
+            <img
+              src={`${import.meta.env.BASE_URL}kampus.webp`}
+              alt="Wizualizacja zintegrowanego kampusu senioralnego"
+              style={{
+                display: 'block',
+                width: '100%',
+                maxWidth: 560,
+                borderRadius: 16,
+                border: '1px solid rgba(255,255,255,.14)',
+                boxShadow: '0 30px 60px -34px rgba(0,0,0,.6)',
+              }}
+            />
+          }
         />
         <ComposeSlide
           id="s12"
