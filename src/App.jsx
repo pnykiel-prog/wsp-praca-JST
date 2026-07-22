@@ -906,6 +906,16 @@ export default function App() {
           mods={mods01}
           note="Dane wprowadza cała sieć otoczenia seniora — senior, rodzina, POZ, OPS, NGO — nie tylko OPS. Integracje/API z lokalnymi systemami."
         />
+
+        {/* ===== Obszar 01 — Obraz: obieg informacji (osobny slajd) ===== */}
+        <ImageSlide
+          id="s6-img"
+          group="a01"
+          src="diagnoza-flow.webp"
+          kicker="Obszar 01 · Jak działa aplikacja"
+          caption="Obieg informacji w systemie badania potrzeb opiekuńczych — od źródeł danych, przez ankietę, analizę i panel JST, po decyzję, koordynację i raportowanie."
+        />
+
         <ProofSection id="s7" group="a01" full={full}>
           <ProofHead label="Obszar 01 · Jak to działa" />
           <H2Light style={{ margin: '0 0 34px' }}>Trzy kroki od ankiety do decyzji</H2Light>
@@ -1310,6 +1320,16 @@ export default function App() {
           mods={mods05}
           note="Adaptacja domów może korzystać z Funduszu Dopłat (BGK) — CAPEX również na wsi. Przy OSP obowiązuje zasada rozdzielności księgowej."
         />
+
+        {/* ===== Obszar 05 — Obraz: model Wioska Opiekuńcza (osobny slajd) ===== */}
+        <ImageSlide
+          id="s18-img"
+          group="a05"
+          src="wioska-flow.webp"
+          kicker="Obszar 05 · Jak działa model"
+          caption={'Model „Wioska Opiekuńcza” — od diagnozy i kwalifikacji, przez Sąsiedzkie Domy Seniora i OSP jako operatora lokalnego, po wspólny system, monitoring i odnowę wsi (SAN).'}
+        />
+
         <ProofSection id="s19" group="a05" full={full} maxWidth={1000}>
           <ProofHead label="Obszar 05 · Dlaczego adaptacja" />
           <H2Light style={{ margin: '0 0 30px' }}>Adaptacja domów, a nie budowa instytucji</H2Light>
