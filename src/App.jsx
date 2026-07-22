@@ -265,6 +265,46 @@ function VideoSlide({ id, group, label, heading }) {
   )
 }
 
+/* ===== Obraz w ramce (prawa kolumna slajdu Problem) =====
+ * Renderuje obraz z public/ w ramce; gdy pliku brak — czytelny placeholder.
+ */
+function FramedImg({ src, alt, maxWidth = 560 }) {
+  const [ok, setOk] = useState(true)
+  const frame = {
+    display: 'block',
+    width: '100%',
+    maxWidth,
+    borderRadius: 16,
+    border: '1px solid rgba(255,255,255,.14)',
+    boxShadow: '0 30px 60px -34px rgba(0,0,0,.6)',
+  }
+  if (!ok) {
+    return (
+      <div
+        style={{
+          ...frame,
+          minHeight: 300,
+          background: 'rgba(255,255,255,.05)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          padding: 24,
+          color: '#AEB9CB',
+        }}
+      >
+        <div>
+          <div style={{ fontWeight: 700, color: '#F4EEE1', marginBottom: 6 }}>Miejsce na grafikę</div>
+          <div style={{ fontSize: 13, lineHeight: 1.6 }}>
+            Dograj plik <code style={{ color: '#F4EEE1' }}>public/{src}</code>.
+          </div>
+        </div>
+      </div>
+    )
+  }
+  return <img src={`${import.meta.env.BASE_URL}${src}`} alt={alt} onError={() => setOk(false)} style={frame} />
+}
+
 /* ===== Slajd-obraz (zdjęcie/infografika systemu) =====
  * Pokazuje obraz na całą wysokość slajdu, z krótką etykietą i podpisem.
  * Dopóki pliku nie ma w `public/`, wyświetla placeholder z nazwą pliku
@@ -922,17 +962,10 @@ export default function App() {
           tags={['Szybsza reakcja bez udziału seniora', 'Obchody krótsze i celowane', 'Bez obrazu wideo (RODO)', 'Dokumentacja zdarzeń']}
           note="Zakres: mieszkania rozproszone — lokale wspomagane, COM, mieszkania gminne i prywatne (nie DPS)."
           diagram={
-            <img
-              src={`${import.meta.env.BASE_URL}senior-przeglad.webp`}
+            <FramedImg
+              src="senior-przeglad.webp"
               alt="Monitoring aktywności i bezpieczeństwa w mieszkaniu seniora"
-              style={{
-                display: 'block',
-                width: '100%',
-                maxWidth: 540,
-                borderRadius: 16,
-                border: '1px solid rgba(255,255,255,.14)',
-                boxShadow: '0 30px 60px -34px rgba(0,0,0,.6)',
-              }}
+              maxWidth={540}
             />
           }
         />
@@ -1045,20 +1078,23 @@ export default function App() {
             'Jedna linia odpowiedzialności',
           ]}
           diagram={
-            <img
-              src={`${import.meta.env.BASE_URL}kampus.webp`}
-              alt="Wizualizacja zintegrowanego kampusu senioralnego"
-              style={{
-                display: 'block',
-                width: '100%',
-                maxWidth: 560,
-                borderRadius: 16,
-                border: '1px solid rgba(255,255,255,.14)',
-                boxShadow: '0 30px 60px -34px rgba(0,0,0,.6)',
-              }}
+            <FramedImg
+              src="kampus-schemat.webp"
+              alt="Schemat funkcjonalny kampusu opiekuńczego"
+              maxWidth={560}
             />
           }
         />
+
+        {/* ===== Obszar 03 — Obraz: wizualizacja kampusu (osobny slajd) ===== */}
+        <ImageSlide
+          id="s11-img"
+          group="a03"
+          src="kampus.webp"
+          kicker="Obszar 03 · Wizualizacja"
+          caption="Przykładowy zintegrowany kampus senioralny — mieszkania w cichej strefie wewnętrznej, funkcje medyczne i opiekuńcze na krawędzi publicznej, plac jako serce założenia."
+        />
+
         <ComposeSlide
           id="s12"
           group="a03"
