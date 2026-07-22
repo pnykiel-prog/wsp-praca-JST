@@ -267,6 +267,67 @@ function VideoSlide({ id, group, label, heading }) {
   )
 }
 
+/* ===== Slajd-obraz (zdjęcie/infografika systemu) =====
+ * Pokazuje obraz na całą wysokość slajdu, z krótką etykietą i podpisem.
+ * Dopóki pliku nie ma w `public/`, wyświetla placeholder z nazwą pliku
+ * do dograniu (wzorzec jak przy wideo).
+ */
+function ImageSlide({ id, group, src, kicker, caption }) {
+  const [ok, setOk] = useState(true)
+  return (
+    <section
+      id={id}
+      data-nav-group={group}
+      className="slide"
+      style={{
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        padding: '104px 96px 84px 210px',
+        background: BG_COMPOSE,
+      }}
+    >
+      <div style={{ width: '100%', maxWidth: 1180, margin: '0 auto' }}>
+        <SectionLabel>{kicker}</SectionLabel>
+        <div
+          style={{
+            background: '#fff',
+            border: '1px solid #ECE4D3',
+            borderRadius: 18,
+            boxShadow: '0 14px 40px -28px rgba(20,40,70,.5)',
+            overflow: 'hidden',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            minHeight: ok ? undefined : 320,
+          }}
+        >
+          {ok ? (
+            <img
+              src={`${import.meta.env.BASE_URL}${src}`}
+              alt={caption || kicker}
+              onError={() => setOk(false)}
+              style={{ display: 'block', maxWidth: '100%', maxHeight: '72vh', width: 'auto', height: 'auto', margin: '0 auto' }}
+            />
+          ) : (
+            <div style={{ textAlign: 'center', color: '#8A93A5', padding: 40, lineHeight: 1.6 }}>
+              <div style={{ fontSize: 15, fontWeight: 700, color: '#16305A', marginBottom: 8 }}>Miejsce na obraz</div>
+              <div style={{ fontSize: 13.5 }}>
+                Dograj plik do folderu <code style={{ color: '#16305A' }}>public/</code> pod nazwą{' '}
+                <code style={{ color: '#16305A' }}>{src}</code>.
+              </div>
+            </div>
+          )}
+        </div>
+        {caption && (
+          <div style={{ marginTop: 16, fontSize: 13.5, color: '#5A6478', lineHeight: 1.5, maxWidth: 900 }}>{caption}</div>
+        )}
+      </div>
+    </section>
+  )
+}
+
 /* ===== Slajd-przerywnik (hasło przejściowe) =====
  * Jedna mocna myśl, duża typografia, dużo światła. Spójny układ dla wszystkich.
  * variant 'gold' — akcent koloru marki (wejście w obszar/sekcję)
@@ -864,6 +925,16 @@ export default function App() {
           note="Zakres: mieszkania rozproszone — lokale wspomagane, COM, mieszkania gminne i prywatne (nie DPS)."
           diagram={<DiagramBezpieczny />}
         />
+
+        {/* ===== Obszar 02 — Obraz: przegląd systemu ===== */}
+        <ImageSlide
+          id="s8-img"
+          group="a02"
+          src="senior-przeglad.png"
+          kicker="Obszar 02 · System w praktyce"
+          caption="Bezdotykowy monitoring aktywności i bezpieczeństwa w mieszkaniu seniora — czujniki ruchu, obecności i codziennych nawyków, z podglądem statusu dla opiekuna."
+        />
+
         <ComposeSlide
           id="s9"
           group="a02"
@@ -872,6 +943,16 @@ export default function App() {
           mods={mods02}
           note={'Integracja z opieką środowiskową MOPS; opcjonalnie teleopieka i przycisk SOS. „Bez obrazu wideo" to sedno akceptacji przez seniorów i rodziny.'}
         />
+
+        {/* ===== Obszar 02 — Obraz: rzut mieszkania i elementy systemu ===== */}
+        <ImageSlide
+          id="s9-img"
+          group="a02"
+          src="senior-rzut.png"
+          kicker="Obszar 02 · Elementy systemu"
+          caption="Rozmieszczenie czujników i panelu kontaktu w mieszkaniu — monitoring oparty na analizie ruchu i danych środowiskowych, bez nagrywania obrazu."
+        />
+
         <ProofSection id="s10" group="a02" full={full}>
           <ProofHead label="Obszar 02 · Prywatność, reakcja, skala" />
           <H2Light style={{ margin: '0 0 34px' }}>Reaguje sam — zanim będzie za późno</H2Light>
@@ -921,6 +1002,15 @@ export default function App() {
             </div>
           </div>
         </ProofSection>
+
+        {/* ===== Obszar 02 — Obraz: ścieżka alarmu i eskalacja ===== */}
+        <ImageSlide
+          id="s10-img"
+          group="a02"
+          src="senior-alarm.png"
+          kicker="Obszar 02 · Ścieżka alarmu"
+          caption="Od automatycznego wykrycia zdarzenia, przez równoczesne powiadomienie rodziny, opiekuna i gminy, po automatyczną eskalację do pogotowia, gdy brak reakcji."
+        />
 
         {/* ===== Obszar 02 — Wideo: monitoring w praktyce ===== */}
         <VideoSlide
