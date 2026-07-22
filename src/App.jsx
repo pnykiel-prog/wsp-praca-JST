@@ -6,7 +6,6 @@ import { Icon } from './icons.jsx'
 import { ModCard, TagPill, SectionLabel, ProofHead, H2Light } from './ui.jsx'
 import {
   DiagramDiagnoza,
-  DiagramDps,
   DiagramWies,
 } from './diagrams.jsx'
 import {
@@ -1170,7 +1169,13 @@ export default function App() {
           problem={'Placówki działają pod presją kosztów i braków kadrowych — nie da się „ciąć etatów", bo kadry brakuje.'}
           heading="Nie cięcia — żeby ta sama złotówka robiła więcej"
           tags={['Niższe koszty mediów bez obniżania standardu', 'Mniej pracy bezproduktywnej', 'Wcześniejsze wykrywanie incydentów', 'Decyzje na danych']}
-          diagram={<DiagramDps />}
+          diagram={
+            <FramedImg
+              src="dps-diagram.webp"
+              alt="Pięć modułów oszczędności w placówce DPS"
+              maxWidth={560}
+            />
+          }
         />
         <ComposeSlide
           id="s15"
