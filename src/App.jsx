@@ -1180,6 +1180,16 @@ export default function App() {
           mods={mods04}
           note="Moduły dobierane pod konkretny obiekt — wdraża się te, które dadzą największy efekt."
         />
+
+        {/* ===== Obszar 04 — Obraz: system oszczędności (osobny slajd) ===== */}
+        <ImageSlide
+          id="s15-img"
+          group="a04"
+          src="dps-moduly.webp"
+          kicker="Obszar 04 · System oszczędności"
+          caption="Pięć modułów w jednej platformie — energia, sprzątanie, bezpieczeństwo, aktywizacja i analityka. Każdy z mierzalnym efektem (KPI); łącznie ok. 20–40% niższych kosztów operacyjnych (poglądowo)."
+        />
+
         <ProofSection id="s16" group="a04" full={full}>
           <ProofHead label="Obszar 04 · Ile to daje" badge="Interaktywne" />
           <H2Light style={{ margin: '0 0 30px' }}>Kalkulator przykładowych oszczędności</H2Light>
